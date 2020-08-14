@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <div class="logo"></div>
+    <div class="logo" @click="menuHandle">LOGO</div>
     <ul class="menu">
       <li>菜单一</li>
       <li>菜单二</li>
@@ -9,8 +9,16 @@
 </template>
 
 <script lang="ts">
+import { inject, Ref} from 'vue'
 export default {
-
+  setup () {
+    const menuVisible = inject<Ref<boolean>>('menu')
+    console.log('Topnav中的 meneuVisible: ' + menuVisible.value)
+    const menuHandle = () => {
+      menuVisible.value = !menuVisible.value
+    }
+    return { menuHandle }
+  }
 }
 </script>
 
