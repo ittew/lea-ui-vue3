@@ -1,10 +1,11 @@
 <template>
   <div class="topnav">
-    <div class="logo" @click="menuHandle">LOGO</div>
+    <div class="logo">LOGO</div>
     <ul class="menu">
       <li>菜单一</li>
       <li>菜单二</li>
     </ul>
+    <aside class="toggleAside"  @click="menuHandle"></aside>
   </div>
 </template>
 
@@ -29,6 +30,8 @@ export default {
   padding: 16px;
   position: relative;
   z-index: 10;
+  justify-content: center;
+  align-items: center;
   > .logo {
     max-width: 6em;
     margin-right: auto;
@@ -40,6 +43,21 @@ export default {
     > li {
       margin: 0 1em;
     }
+  }
+  .toggleAside{
+    width: 24px;
+    height: 24px;
+    background: red;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+  }
+  @media (max-width:500px) {
+    .logo{ margin: 0 auto; }
+    .menu{ display: none; }
+    .toggleAside{display: inline-block; }
   }
 }
 </style>
